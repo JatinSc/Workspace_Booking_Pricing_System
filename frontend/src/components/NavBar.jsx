@@ -5,8 +5,6 @@ export default function NavBar() {
   const navItems = [
     { to: '/rooms', id: 'rooms', label: 'Book Rooms' },
     { to: '/admin-view', id: 'admin-view', label: 'Admin View' },
-    // { to: '/admin-bookings', id: 'admin-bookings', label: 'Bookings' },
-    // { to: '/admin-analytics', id: 'admin-analytics', label: 'Analytics' }
   ];
 
   return (

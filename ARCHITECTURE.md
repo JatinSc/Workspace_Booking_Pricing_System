@@ -21,8 +21,10 @@ This section provides a high-level overview of the project's directory structure
 │   ├── public/_redirects         # Netlify redirects for SPA routing
 │   ├── src/
 │   │   ├── components/           # UI building blocks (RoomCard, NavBar etc.)
+│   │   │   └── admin/            # Admin UI modules (AnalyticsPanel, BookingsManagement, AdminHeader)
 │   │   ├── pages/                # Screens (RoomsListing, BookingForm, AdminView)
 │   │   ├── api/                  # API client (HTTP wrapper for backend)
+│   │   ├── hooks/                # Reusable logic (useAdminAnalytics, useAdminBookings)
 │   │   └── utils/                # Frontend time utils (IST formatting)
 │   └── package.json              # Frontend scripts and dependencies
 ├── scripts/                      # Deployment/upload helpers (optional)
@@ -277,6 +279,3 @@ Math.round(total * 100) / 100
 - Bolt.AI for Basic UI Creation and Componentization.
 - Documentation structuring, code organization suggestions, and refactor planning.
 - Pair-programming support for routing changes and UI enhancements.
-
-**Review Guidance:**
-- Treat AI-authored docs and patches as proposals; the authoritative source of truth is the code in `services/*`, `models/*`, and `utils/*`.

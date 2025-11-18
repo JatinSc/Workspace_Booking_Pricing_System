@@ -5,6 +5,8 @@ import { startOfDayISO, endOfDayISO } from '../utils/dateUtils.js';
 
 const TZ = process.env.BUSINESS_TZ || 'Asia/Kolkata';
 
+// Aggregates booking data by room within a date range and computes totals.
+// Validates inputs and converts boundaries to BUSINESS_TZ day windows.
 export async function computeAnalyticsService({ from, to }) {
   // Ensure both date boundaries are provided; throw if missing
   if (!from || !to) throw serviceError('VALIDATION_ERROR', 'from and to are required (YYYY-MM-DD)');

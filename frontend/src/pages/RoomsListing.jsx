@@ -4,6 +4,8 @@ import RoomCard from '../components/RoomCard';
 import { api } from '../api/client';
 import { useNavigate } from 'react-router-dom';
 
+// Displays available rooms fetched from backend.
+// Provides navigation to booking form for a selected room.
 export default function RoomsListing() {
   const [rooms, setRooms] = useState([]);
   const navigate = useNavigate();

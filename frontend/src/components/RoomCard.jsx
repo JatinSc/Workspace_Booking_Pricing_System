@@ -1,7 +1,10 @@
+
 import { Users, Clock } from 'lucide-react';
 
+// Display card for a single room with capacity and base hourly rate.
+// Shows a "Peak Hour" badge for visually distinguishing higher-rate rooms.
 export default function RoomCard({ room, onBook }) {
-  const isPeakHour = room.baseHourlyRate > 400;
+  const isPeakHour = room.baseHourlyRate >= 300;
 
   return (
     <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">

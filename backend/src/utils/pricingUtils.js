@@ -1,4 +1,5 @@
 export function isPeak(date, tz = 'UTC') {
+  // Break the date into weekday and hour in the given timezone
   const parts = new Intl.DateTimeFormat('en-US', {
     timeZone: tz,
     weekday: 'short',
@@ -7,6 +8,7 @@ export function isPeak(date, tz = 'UTC') {
   }).formatToParts(date);
   const weekdayStr = parts.find(p => p.type === 'weekday')?.value || 'Sun';
   const hour = Number(parts.find(p => p.type === 'hour')?.value || '0');
+  // Map weekday string to numeric day (0=Sun, 6=Sat)
   const dayMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
   const day = dayMap[weekdayStr] ?? 0;
   const isWeekday = day >= 1 && day <= 5;
@@ -19,20 +21,24 @@ export function isPeak(date, tz = 'UTC') {
 }
 
 export function computeDynamicPrice(start, end, baseRate, tz = "UTC") {
+  // Ensure start and end are Date objects
   const s = start instanceof Date ? start : new Date(start);
   const e = end instanceof Date ? end : new Date(end);
 
   let total = 0;
-  const oneMinute = 60 * 1000;
+  const oneMinute = 60 * 1000; // ms in one minute
 
   const endTime = e.getTime();
 
+  // Loop each minute in the interval
   for (let t = s.getTime(); t < endTime; t += oneMinute) {
     const d = new Date(t);
     const isPeakHour = isPeak(d, tz);
+    // Apply 50% surcharge during peak minutes
     const ratePerMinute = (isPeakHour ? baseRate * 1.5 : baseRate) / 60;
     total += ratePerMinute;
   }
-
+ 
+  // Round to two decimals
   return Math.round(total * 100) / 100;
 }

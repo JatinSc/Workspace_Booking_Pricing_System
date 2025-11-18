@@ -1,3 +1,5 @@
+// Lightweight HTTP client wrapper around fetch.
+// Exposes API functions for rooms, bookings, and analytics.
 const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/';
 
 async function request(path, options = {}) {
@@ -15,11 +17,16 @@ async function request(path, options = {}) {
 }
 
 export const api = {
+  // Rooms
   getRooms: () => request('api/rooms'),
   seedRooms: () => request('api/rooms/seed', { method: 'POST' }),
+
+  // Bookings
   listBookings: () => request('api/bookings'),
   createBooking: (payload) => request('api/bookings/create', { method: 'POST', body: JSON.stringify(payload) }),
   cancelBooking: (id) => request(`api/bookings/${id}/cancel`, { method: 'POST' }),
+
+  // Analytics
   getAnalytics: (from, to) => request(`api/analytics?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`)
 };
 

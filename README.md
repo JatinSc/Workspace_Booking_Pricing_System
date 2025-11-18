@@ -11,7 +11,7 @@ routes → controllers → services → models → utils.
 
 | Component  | URL |
 |-----------|-----|
-| **Frontend** | https://workspace-booking-system.netlify.app// |
+| **Frontend** | https://workspace-booking-system.netlify.app/ |
 | **Backend**  | https://booking-system-backend-j1c9.onrender.com |
 
 ---
@@ -173,3 +173,17 @@ Response
 ## ⏱ Time Zone Notes
 - Backend and frontend use `Asia/Kolkata (IST)`.
 - Frontend sends ISO timestamps with `+05:30` offset to ensure backend consistency.
+
+---
+
+##  Admin View
+To improve readability and maintainability, the Admin page has been modularized into self-contained UI components and hooks. Behavior is unchanged; composition is cleaner and easier to extend and test.
+
+- components created
+  - `frontend/src/components/admin/AdminHeader.jsx` — page title and toggle between Bookings and Analytics.
+  - `frontend/src/components/admin/AnalyticsPanel.jsx` — date range inputs, KPIs, and room-wise revenue table.
+  - `frontend/src/components/admin/BookingsManagement.jsx` — filters, bookings table, and pagination controls.
+
+- hooks used
+  - `frontend/src/hooks/useAdminAnalytics.js` — analytics state, derived totals, and fetch handler.
+  - `frontend/src/hooks/useAdminBookings.js` — bookings state, filters, pagination, fetch + cancel handlers.

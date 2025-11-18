@@ -201,10 +201,10 @@ export default function BookingForm() {
           ← Back to Rooms
         </button>
 
-        {/* <div className="text-center mb-12">
+        <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">Complete Your Booking</h1>
           <p className="text-lg text-gray-600">Just a few details to secure your workspace</p>
-        </div> */}
+        </div>
 
         <div className="flex flex-row items-start gap-5">
           <div className="w-[30%]">

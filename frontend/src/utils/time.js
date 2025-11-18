@@ -1,4 +1,5 @@
-// Shared time utilities for frontend components
+// Shared time utilities for frontend components.
+// Provides business timezone constants and helpers for formatting and comparisons.
 export const BUSINESS_TZ = 'Asia/Kolkata';
 
 // Returns { date, time } formatted in business timezone

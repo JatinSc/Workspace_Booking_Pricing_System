@@ -1,3 +1,4 @@
+// Generic card container to present labeled sections (e.g., pricing breakdown).
 export default function SummaryCard({ title, children, className = '' }) {
   return (
     <div className={`bg-white rounded-2xl shadow-lg p-6 ${className}`}>

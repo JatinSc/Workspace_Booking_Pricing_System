@@ -1,4 +1,5 @@
-  import { getAllRooms, seedRooms } from '../models/roomModel.js';
+// Room-related service functions: list all rooms and seed defaults for initial setup.
+import { getAllRooms, seedRooms } from '../models/roomModel.js';
 
   export async function getAllRoomsService() {
     return getAllRooms();
