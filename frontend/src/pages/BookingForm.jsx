@@ -5,6 +5,7 @@ import SummaryCard from '../components/SummaryCard';
 import { api, toISTIso } from '../api/client';
 import { BUSINESS_TZ, businessTodayISO, businessNowHM } from '../utils/time';
 import { toast } from 'react-hot-toast';
+import Loader from '../components/common/Loader';
 
 export default function BookingForm() {
   const navigate = useNavigate();
@@ -172,7 +173,9 @@ export default function BookingForm() {
     return (
       <div className="bg-gradient-to-br from-gray-50 to-gray-100 py-8">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-12">
-          <p className="text-gray-700">Loading room details...</p>
+          <div className="flex items-center justify-center py-16">
+            <Loader />
+          </div>
         </div>
       </div>
     );
