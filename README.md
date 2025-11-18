@@ -1,3 +1,129 @@
+# Workspace Booking & Pricing System
+
+A full-stack mini system that allows users to browse rooms, create bookings, cancel bookings, and view admin analytics — with real-world rules like dynamic pricing, conflict prevention, cancellation policies, and timezone-accurate calculations.
+
+This project closely follows clean architecture principles with separate layers for
+routes → controllers → services → models → utils.
+
+---
+
+## 🚀 Live Deployment
+
+| Component  | URL |
+|-----------|-----|
+| **Frontend** | https://yourname-workspace.netlify.app/ |
+| **Backend** | https://booking-system-backend-j1c9.onrender.com |
+
+---
+
+# 📦 How to Run Locally
+
+### **1. Clone Repository**
+```bash
+git clone https://github.com/JatinSc/Workspace_Booking_Pricing_System.git
+cd Workspace_Booking_Pricing_System
+
+🖥 Backend Setup
+Install Dependencies
+cd backend
+npm install
+
+Environment Variables
+Create backend/.env:
+PORT=3001 || any other port number
+MongoURL= your mongodb connection string
+BUSINESS_TZ=Asia/Kolkata
+
+Start Backend
+npm start
+Backend runs at:
+👉 http://localhost:3001/api
+health check:
+👉 http://localhost:3001/api/health
+
+
+
+🎨 Frontend Setup
+Install Dependencies
+cd frontend
+npm install
+
+Environment Variables
+Create frontend/.env:
+
+VITE_API_BASE_URL= http://localhost:3001/api || your backend deployed url
+
+Start Frontend
+npm run dev
+
+Frontend runs at:
+👉 http://localhost:5173
+
+
+Backend API Samples
+✔ Health Check
+GET /api/health
+→ { "ok": true }
+
+✔ List Rooms
+GET /api/rooms
+Response:[
+  {
+    "roomId": "101",
+    "name": "Cabin 1",
+    "capacity": 4,
+    "baseHourlyRate": 200
+  }]
+
+✔ Create Booking
+POST /api/bookings/create
+Request: {
+  "roomId": "101",
+  "userName": "Alice",
+  "startTime": "2025-11-20T10:00:00+05:30",
+  "endTime": "2025-11-20T12:30:00+05:30" }
+
+Success: { "id": "655fae12ef98e", "roomId": "101", "userName": "Alice", "totalPrice": 412.5, "status": "CONFIRMED" }
+
+Conflict: { "error": "Room already booked from 5:30 PM to 6:30 PM" }
+Validation: { "error": "Start time must be before end time" }
+
+✔ Cancel Booking
+POST /api/bookings/:id/cancel
+Request: { "id": "655fae12ef98e" }
+Success: { "status": "CANCELED" }
+
+
+Errors: { "error": "Booking already canceled" } OR { "error": "Cannot cancel within 2 hours of start time" }
+
+✔ List All Bookings
+GET /api/bookings
+
+✔ Analytics
+GET /api/analytics?from=2025-11-01&to=2025-11-30
+Response: [ {"roomId": "101", "roomName": "Cabin 1", "totalHours": 12.5, "totalRevenue": 250.0 }
+ ]
+
+🧠 Dynamic Pricing Rules
+Base pricing = baseHourlyRate
+Peak hours (Mon–Fri): 10:00–12:59 AND 16:00–18:59
+Peak multiplier = 1.5×
+Pricing is computed per minute for accuracy.
+Total = sum(price_per_minute) across all minutes.
+
+📆 Cancellation Policy
+A confirmed booking can be canceled only if current time is more than 2 hours before its startTime.
+Otherwise → 400 Bad Request
+Canceled bookings do not appear in analytics.
+
+⏱ Time Zone Notes
+All backend and frontend use:
+Asia/Kolkata (IST)
+Frontend sends ISO timestamps with +05:30 offset to ensure backend consistency.
+
+
+
+
 **Backend Overview**
 - Express + Node.js API backed by MongoDB (via `mongoose`).
 - Clean layering: `routes` → `controllers` → `services` → `models` + `utils`.

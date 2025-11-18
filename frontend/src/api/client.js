@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/';
 
 async function request(path, options = {}) {
   const res = await fetch(`${BASE_URL}${path}`, {
@@ -15,12 +15,12 @@ async function request(path, options = {}) {
 }
 
 export const api = {
-  getRooms: () => request('/rooms'),
-  seedRooms: () => request('/rooms/seed', { method: 'POST' }),
-  listBookings: () => request('/bookings'),
-  createBooking: (payload) => request('/bookings/create', { method: 'POST', body: JSON.stringify(payload) }),
-  cancelBooking: (id) => request(`/bookings/${id}/cancel`, { method: 'POST' }),
-  getAnalytics: (from, to) => request(`/analytics?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`)
+  getRooms: () => request('api/rooms'),
+  seedRooms: () => request('api/rooms/seed', { method: 'POST' }),
+  listBookings: () => request('api/bookings'),
+  createBooking: (payload) => request('api/bookings/create', { method: 'POST', body: JSON.stringify(payload) }),
+  cancelBooking: (id) => request(`api/bookings/${id}/cancel`, { method: 'POST' }),
+  getAnalytics: (from, to) => request(`api/analytics?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`)
 };
 
 export function toISTIso(dateStr, timeStr) {
