@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 // Removed filtering UI; keep rooms listing simple
 import RoomCard from '../components/RoomCard';
+import Loader from '../components/common/Loader';
 import { api } from '../api/client';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 // Provides navigation to booking form for a selected room.
 export default function RoomsListing() {
   const [rooms, setRooms] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,13 +31,16 @@ export default function RoomsListing() {
         console.error('Failed to load rooms', e);
         setRooms([]);
       }
+      finally {
+        if (mounted) setLoading(false);
+      }
     })();
     return () => { mounted = false; };
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="h-screen overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 py-12 flex flex-col">
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-gray-900 mb-4">
             Find Your Perfect Workspace
@@ -53,19 +58,25 @@ export default function RoomsListing() {
           </h2>
         </div>
 
-        <div className="h-[60vh] overflow-y-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {rooms.map((room) => (
-              <RoomCard
-                key={room.roomId || room.id}
-                room={room}
-                onBook={(selectedRoom) => {
-                  const id = selectedRoom?.roomId || selectedRoom?.id;
-                  navigate(`/booking/room-no-${id}`);
-                }}
-              />
-            ))}
-          </div>
+        <div className="flex-1 min-h-0 overflow-y-auto">
+          {loading ? (
+            <div className="flex items-center justify-center h-full">
+              <Loader />
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {rooms.map((room) => (
+                <RoomCard
+                  key={room.roomId || room.id}
+                  room={room}
+                  onBook={(selectedRoom) => {
+                    const id = selectedRoom?.roomId || selectedRoom?.id;
+                    navigate(`/booking/room-no-${id}`);
+                  }}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
