@@ -6,6 +6,7 @@ This document serves as a critical, living template designed to give contributor
 ## 1. Project Structure
 This section provides a high-level overview of the project's directory structure, organized by architectural layers. It enables quick navigation and clarifies the separation of backend and frontend responsibilities.
 
+```text
 [Project Root]/
 ├── backend/                      # All server-side logic (Node.js + Express)
 │   ├── src/
@@ -27,6 +28,7 @@ This section provides a high-level overview of the project's directory structure
 ├── scripts/                      # Deployment/upload helpers (optional)
 ├── README.md                     # Project overview & quick start
 └── ARCHITECTURE.md               # This document
+```
 
 ---
 
@@ -278,4 +280,3 @@ Math.round(total * 100) / 100
 
 **Review Guidance:**
 - Treat AI-authored docs and patches as proposals; the authoritative source of truth is the code in `services/*`, `models/*`, and `utils/*`.
-
