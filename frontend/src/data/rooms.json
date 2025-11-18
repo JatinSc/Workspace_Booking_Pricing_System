@@ -1,0 +1,30 @@
+[
+  {
+    "id": "101",
+    "name": "Executive Meeting Room",
+    "capacity": 8,
+    "baseHourlyRate": 300,
+    "image": "https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "id": "102",
+    "name": "Conference Cabin",
+    "capacity": 12,
+    "baseHourlyRate": 450,
+    "image": "https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "id": "103",
+    "name": "Private Discussion Room",
+    "capacity": 4,
+    "baseHourlyRate": 200,
+    "image": "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "id": "104",
+    "name": "Open Collaboration Space",
+    "capacity": 15,
+    "baseHourlyRate": 500,
+    "image": "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800"
+  }
+]

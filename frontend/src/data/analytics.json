@@ -1,0 +1,14 @@
+[
+  {
+    "roomId": "101",
+    "roomName": "Executive Meeting Room",
+    "totalHours": 15.5,
+    "totalRevenue": 5250
+  },
+  {
+    "roomId": "102",
+    "roomName": "Conference Cabin",
+    "totalHours": 8,
+    "totalRevenue": 3600
+  }
+]
