@@ -26,7 +26,7 @@ export const api = {
   createBooking: (payload) => request('api/bookings/create', { method: 'POST', body: JSON.stringify(payload) }),
   cancelBooking: (id) => request(`api/bookings/${id}/cancel`, { method: 'POST' }),
 
-  // Analytics
+  // Analytics with query params for date range from=YYYY-MM-DD&to=YYYY-MM-DD
   getAnalytics: (from, to) => request(`api/analytics?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`)
 };
 
