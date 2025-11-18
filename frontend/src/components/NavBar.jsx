@@ -13,7 +13,7 @@ export default function NavBar() {
     <nav className="bg-white shadow-sm border-b border-gray-200">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-3 hover:cursor-pointer" onClick={() => window.location.href = '/'}>
             <Building2 className="w-8 h-8 text-indigo-600" />
             <span className="text-xl font-bold text-gray-900">WorkSpace</span>
           </div>

@@ -280,7 +280,7 @@ export default function AdminView() {
                       <select
                         value={statusFilter}
                         onChange={(e) => setStatusFilter(e.target.value)}
-                        className="font-medium bg-white/20 text-white rounded-md px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-white border border-white/30"
+                        className="font-medium bg-white/20 text-gray-800 rounded-md px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-white border border-white/30"
                       >
                         <option value="ALL">All Statuses</option>
                         {uniqueStatuses.map((s) => (
@@ -293,7 +293,7 @@ export default function AdminView() {
                       <select
                         value={roomFilter}
                         onChange={(e) => setRoomFilter(e.target.value)}
-                        className="font-medium bg-white/20 text-white rounded-md px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-white border border-white/30"
+                        className="font-medium bg-white/20 text-gray-800 rounded-md px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-white border border-white/30"
                       >
                         <option value="ALL">All Rooms</option>
                         {uniqueRoomIds.map((id) => (

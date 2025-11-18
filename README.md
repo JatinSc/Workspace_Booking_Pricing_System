@@ -11,7 +11,7 @@ routes → controllers → services → models → utils.
 
 | Component  | URL |
 |-----------|-----|
-| **Frontend** | https://yourname-workspace.netlify.app/ |
+| **Frontend** | https://workspace-booking-system.netlify.app// |
 | **Backend**  | https://booking-system-backend-j1c9.onrender.com |
 
 ---
